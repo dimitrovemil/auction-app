@@ -1,10 +1,10 @@
 import './App.css';
-import { About } from './components/About';
+import { About } from './components/common/About';
 import { Contact } from './components/common/Contact';
 import { Footer } from './components/common/Footer';
 import { Signup } from './components/common/Signup';
-import { Masthead } from './components/Masthead';
-import { Navigation } from './components/Navigation';
+import { Masthead } from './components/common/Masthead';
+import { Navigation } from './components/common/Navigation';
 import { ProjectList } from './components/project-list/ProjectList';
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
                 <Masthead />
 
                 <About />
-                {/* Projects*/}
+                
                 <ProjectList />
 
                 <Signup />
