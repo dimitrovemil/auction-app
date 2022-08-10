@@ -7,7 +7,7 @@ export const Navigation = () => {
         <nav className="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
             <div className="container px-4 px-lg-5">
                 <a className="navbar-brand" href="#page-top">
-                    Start Bootstrap
+                    The Art Auction House
                 </a>
                 <button
                     className="navbar-toggler navbar-toggler-right"

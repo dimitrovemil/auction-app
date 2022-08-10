@@ -23,6 +23,10 @@ export const ProjectItem = ({ data, index }) => {
                                         {data.description}
                                     </p>
                                     <hr className="d-none d-lg-block mb-0 ms-0" />
+                                    <h2 className="text-white-50 mx-auto mt-2 mb-5">
+
+                                    </h2>
+                                    <a className="btn btn-primary" href="#"> Details </a>
                                 </div>
                             </div>
                         </div>
@@ -45,6 +49,10 @@ export const ProjectItem = ({ data, index }) => {
                                         {data.description}
                                     </p>
                                     <hr className="d-none d-lg-block mb-0 me-0" />
+                                    <h2 className="text-white-50 mx-auto mt-2 mb-5">
+
+                                    </h2>
+                                    <a className="btn btn-primary" href="#"> Details </a>
                                 </div>
                             </div>
                         </div>
