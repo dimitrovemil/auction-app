@@ -19,6 +19,11 @@ export const ProjectList = () => {
             title: 'Some title',
             description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, quis.!',
             imageUrl : 'https://www.capturelandscapes.com/wp-content/uploads/2016/12/black-white-landscape-featured.jpg'
+        },
+        {
+            title: 'Some other title',
+            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit dolorem minus veniam est tempora adipisci possimus laborum in, illum eligendi pariatur aut natus fugit, tempore asperiores saepe delectus aliquam modi.',
+            imageUrl : 'https://www.guillenphoto.com/data/blog/2019/016-chronique-pourquoi-photographier-paysages-bw-I/images/photograph-landscapes-in-black-and-white-amar-guillen-landscape-photographer.jpg'
         }
     ]
 
@@ -27,8 +32,8 @@ export const ProjectList = () => {
             <div className="container px-4 px-lg-5">
                 {/* Featured Project Row*/}
                 <ProjectItemFeatured />
-
-                {data.map(x => <ProjectItem key={x.title} data={x} />)}
+                
+                {data.map((x, i) => <ProjectItem key={x.title} data={x} index={i} />)}
                 
                 
             </div>
