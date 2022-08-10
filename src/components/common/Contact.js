@@ -13,7 +13,7 @@ export const Contact = () => {
                                 <h4 className="text-uppercase m-0">Address</h4>
                                 <hr className="my-4 mx-auto" />
                                 <div className="small text-black-50">
-                                    4923 Market Street, Orlando FL
+                                    4923 Market Street, Ankh-Morpork DW
                                 </div>
                             </div>
                         </div>
@@ -25,7 +25,7 @@ export const Contact = () => {
                                 <h4 className="text-uppercase m-0">Email</h4>
                                 <hr className="my-4 mx-auto" />
                                 <div className="small text-black-50">
-                                    <a href="#!">hello@yourdomain.com</a>
+                                    <a href="#!">hello@oldLemonadeFactory.com</a>
                                 </div>
                             </div>
                         </div>
