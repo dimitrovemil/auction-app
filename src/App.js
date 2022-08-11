@@ -6,6 +6,7 @@ import { Signup } from './components/common/Signup';
 import { Masthead } from './components/common/Masthead';
 import { Navigation } from './components/common/Navigation';
 import { ProjectList } from './components/project-list/ProjectList';
+import { ProjectCreate } from './components/project-list/project-create/ProjectCreate';
 
 function App() {
     return (
@@ -17,6 +18,8 @@ function App() {
 
                 <About />
                 
+                {/* <ProjectCreate /> */}
+
                 <ProjectList />
 
                 <Signup />

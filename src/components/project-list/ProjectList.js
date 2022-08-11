@@ -54,7 +54,14 @@ export const ProjectList = () => {
                     <ProjectDetails project={selectetProj.project} onClose={closeHandler} />
                 }
 
-                {data.map((project, i) => <Project key={project._id} index={i} project={project} onDetailsClick={detailsClickHandler} />)}
+                {data.map((project, i) =>
+                    <Project
+                        key={project._id}
+                        index={i}
+                        project={project}
+                        onDetailsClick={detailsClickHandler}
+                    />
+                )}
 
 
             </div>

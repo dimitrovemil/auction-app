@@ -19,7 +19,7 @@ export const ProjectDetails = ({ project, onClose }) => {
                     </header>
                     <div className={`${styles['content']}`}>
                         <div className={`${styles['image-container']}`}>
-                            <img src="" alt=""
+                            <img src={project.imageUrl} alt=""
                                 className={`${styles['image']}`} />
                         </div>
                         <div className={`${styles['user-details']}`}>
@@ -28,7 +28,7 @@ export const ProjectDetails = ({ project, onClose }) => {
                                 Full Name:
                                 <strong></strong>
                             </p>
-                            <p>Email: <strong></strong></p>
+                            <p>Title: <strong>{project.title}</strong></p>
                             <p>Phone Number: <strong></strong></p>
                             <p>
                                 Address:
@@ -36,7 +36,6 @@ export const ProjectDetails = ({ project, onClose }) => {
                                 <strong> </strong>
                             </p>
 
-                            {/* <p>Created on: <strong>Wednesday, June 28, 2022</strong></p> */}
                             <p>Created on: <strong></strong></p>
                             <p>Modified on: <strong></strong></p>
                         </div>

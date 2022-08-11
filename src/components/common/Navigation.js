@@ -25,6 +25,11 @@ export const Navigation = () => {
                     <ul className="navbar-nav ms-auto">
                         <li className="nav-item">
                             <a className="nav-link" href="#about">
+                                Add new
+                            </a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#about">
                                 About
                             </a>
                         </li>
