@@ -1,6 +1,6 @@
-import styles from './ProjectItemFeatured.module.css';
+import styles from './ProjectFeatured.module.css';
 
-export const ProjectItemFeatured = () => {
+export const ProjectFeatured = () => {
 
     return (
 
@@ -14,7 +14,7 @@ export const ProjectItemFeatured = () => {
             </div>
             <div className="col-xl-4 col-lg-5">
                 {/* <div className="featured-text text-center text-lg-left"> */}
-                <div className={`${styles['featured-text']} ${styles['text-center']} ${styles['text-lg-left']}` }>
+                <div className={`${styles['featured-text']} ${styles['text-center']}` }>
                     <h4>Shoreline</h4>
                     <p className="text-black-50 mb-0">
                         Grayscale is open source and MIT licensed. This means you can use
