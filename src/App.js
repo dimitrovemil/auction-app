@@ -2,7 +2,7 @@ import './App.css';
 import { About } from './components/common/About';
 import { Contact } from './components/common/Contact';
 import { Footer } from './components/common/Footer';
-import { Signup } from './components/common/Signup';
+import { UserSignup } from './components/users/userSignup/UserSignup';
 import { Masthead } from './components/common/Masthead';
 import { Navigation } from './components/common/Navigation';
 import { ProjectList } from './components/project-list/ProjectList';
@@ -22,7 +22,7 @@ function App() {
 
                 <ProjectList />
 
-                <Signup />
+                <UserSignup />
 
                 <Contact />
 

@@ -1,6 +1,4 @@
-import styles from './ProjectCreate.module.css';
-
-
+import styles from '../../../AppModal.module.css';
 
 export const ProjectCreate = ({onCreate, onClose}) => {
 

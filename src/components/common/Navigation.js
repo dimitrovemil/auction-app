@@ -40,7 +40,7 @@ export const Navigation = () => {
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" href="#signup">
-                                Contact
+                                Signup
                             </a>
                         </li>
                     </ul>

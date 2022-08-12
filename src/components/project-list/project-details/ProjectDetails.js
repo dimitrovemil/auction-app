@@ -1,4 +1,4 @@
-import styles from './ProjectDetails.module.css';
+import styles from '../../../AppModal.module.css';
 
 export const ProjectDetails = ({ project, onClose }) => {
     return (

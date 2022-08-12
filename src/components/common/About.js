@@ -11,7 +11,7 @@ export const About = () => {
                         <h2 className="text-white mb-4">Welcome to the "The Art Auction House"</h2>
                         <p className="text-white-50">
                             The place where you can publish, get appraised, sell or simply enjoy painting, sculpture and art pieces.<br />
-                            <a href="#projects">Browse our collection</a>
+                            <a href="#projects"><strong>Browse our collection</strong></a>
                             <span> or </span>
                             <a href="#signup">Sign-up</a>
                             <span> / </span>
