@@ -7,24 +7,38 @@ import { Masthead } from './components/common/Masthead';
 import { Navigation } from './components/common/Navigation';
 import { ProjectList } from './components/project-list/ProjectList';
 import { ProjectCreate } from './components/project-list/project-create/ProjectCreate';
+import { useState } from 'react';
 
 function App() {
+    
+    const [view, setView] = useState(null);
+    
+    const viewProjectsHandler = () => {
+        setView('projects');
+    }
+
+    const signupHandler = () => {
+        setView('signup');
+    }
+
     return (
+
         <div className="App">
             <>
-                <Navigation />
+                <Navigation viewProjects={viewProjectsHandler} signup={signupHandler} />
                 
-                <Masthead />
+                {<Masthead />}
+                
 
-                <About />
+                {/* <About /> */}
                 
                 {/* <ProjectCreate /> */}
+                {view == 'projects' && <ProjectList />}
+                
+                {view == 'signup' && <UserSignup />}
+                
 
-                <ProjectList />
-
-                <UserSignup />
-
-                <Contact />
+                {/* <Contact /> */}
 
                 <Footer />
             </>

@@ -1,6 +1,20 @@
+import { useState } from "react";
+import { ProjectCreate } from "../project-list/project-create/ProjectCreate";
 
 
-export const Navigation = () => {
+export const Navigation = ({viewProjects, signup}) => {
+
+    const [action, setAction] = useState(null);
+
+    const closeHandler = () => {
+        setAction(null)
+    }
+
+    const onProjectCreate = (projectData) => {
+        //call service create
+        console.log(projectData);
+        closeHandler();
+    }
 
     return (
 
@@ -24,7 +38,7 @@ export const Navigation = () => {
                 <div className="collapse navbar-collapse" id="navbarResponsive">
                     <ul className="navbar-nav ms-auto">
                         <li className="nav-item">
-                            <a className="nav-link" href="#about">
+                            <a className="nav-link" href="#about" onClick={() => setAction('create')}>
                                 Add new
                             </a>
                         </li>
@@ -34,16 +48,17 @@ export const Navigation = () => {
                             </a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#projects">
+                            <a className="nav-link" href="#projects" onClick={viewProjects}>
                                 Projects
                             </a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#signup">
+                            <a className="nav-link" href="#signup" onClick={signup}>
                                 Signup
                             </a>
                         </li>
                     </ul>
+                    {action == 'create' && <ProjectCreate onClose={closeHandler} onCreate={onProjectCreate}/>}
                 </div>
             </div>
         </nav>

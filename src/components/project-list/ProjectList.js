@@ -49,10 +49,10 @@ export const ProjectList = () => {
     return (
         <section className="projects-section bg-light" id="projects">
 
+            {selectetProj.action === 'details' &&
+                <ProjectDetails project={selectetProj.project} onClose={closeHandler} />
+            }
             <div className="container px-4 px-lg-5">
-                {selectetProj.action === 'details' &&
-                    <ProjectDetails project={selectetProj.project} onClose={closeHandler} />
-                }
 
                 {data.map((project, i) =>
                     <Project
@@ -62,8 +62,6 @@ export const ProjectList = () => {
                         onDetailsClick={detailsClickHandler}
                     />
                 )}
-
-
             </div>
         </section>
     );
