@@ -1,5 +1,10 @@
 import { useState } from "react";
+import {Link} from 'react-router-dom';
+
+
 import { ProjectCreate } from "../project-list/project-create/ProjectCreate";
+
+
 
 
 export const Navigation = ({viewProjects, signup}) => {
@@ -20,9 +25,12 @@ export const Navigation = ({viewProjects, signup}) => {
 
         <nav className="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
             <div className="container px-4 px-lg-5">
-                <a className="navbar-brand" href="#page-top">
+                <Link className="navbar-brand" to="/">
                     The Art Auction House
-                </a>
+                </Link>
+                {/* <a className="navbar-brand" href="#page-top">
+                    The Art Auction House
+                </a> */}
                 <button
                     className="navbar-toggler navbar-toggler-right"
                     type="button"
@@ -38,24 +46,30 @@ export const Navigation = ({viewProjects, signup}) => {
                 <div className="collapse navbar-collapse" id="navbarResponsive">
                     <ul className="navbar-nav ms-auto">
                         <li className="nav-item">
-                            <a className="nav-link" href="#about" onClick={() => setAction('create')}>
+                            <Link className="nav-link" to="#" onClick={() => setAction('create')}>
                                 Add new
-                            </a>
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#about">
-                                About
-                            </a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#projects" onClick={viewProjects}>
+                            <Link className="nav-link" to="/projects" >
                                 Projects
-                            </a>
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#signup" onClick={signup}>
+                            <Link className="nav-link" to="/about">
+                                About
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/contacts">
+                                Contacts
+                            </Link>
+                        </li>
+                        
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/signup" >
                                 Signup
-                            </a>
+                            </Link>
                         </li>
                     </ul>
                     {action == 'create' && <ProjectCreate onClose={closeHandler} onCreate={onProjectCreate}/>}

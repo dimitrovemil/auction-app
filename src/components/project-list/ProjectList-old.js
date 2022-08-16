@@ -1,8 +1,16 @@
+import { useEffect } from "react";
+import { useState } from "react";
+
+
+
+import { ProjectDetails } from "./project-details/ProjectDetails";
 import { ProjectLeft } from "./project-item/ProjectLeft";
 import { ProjectRight } from "./project-item/ProjectRight";
 
 
 export const ProjectList = () => {
+
+    const [selectedProj, setSelectedProj] = useState({ project: null, action: null });
 
     const data = [
         {
@@ -31,8 +39,28 @@ export const ProjectList = () => {
         }
     ]
 
+
+
+    const closeHandler = () => {
+        setSelectedProj({ project: null, action: null });
+    }
+
+    const detailsClickHandler = (projectId) => {
+        let project = data.find(x => x._id === projectId);
+        setSelectedProj({ project, action: 'details' })
+    }
+
+    const editClickHandler = (projectId) => {
+
+    }
+
+
     return (
         <section className="projects-section bg-light" id="projects">
+
+            {selectedProj.action === 'details' &&
+                <ProjectDetails project={selectedProj.project} />
+            }
 
             <div className="container px-4 px-lg-5">
 
@@ -41,11 +69,16 @@ export const ProjectList = () => {
                         ? <ProjectLeft
                             key={project._id}
                             project={project}
+                            onDetailsClick={detailsClickHandler}
+                            onEditClick={editClickHandler}
                         />
                         : <ProjectRight
                             key={project._id}
                             project={project}
+                            onDetailsClick={detailsClickHandler}
+                            onEditClick={editClickHandler}
                         />
+
                 )}
             </div>
         </section>
