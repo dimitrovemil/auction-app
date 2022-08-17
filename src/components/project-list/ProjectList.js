@@ -2,7 +2,7 @@ import { ProjectLeft } from "./project-item/ProjectLeft";
 import { ProjectRight } from "./project-item/ProjectRight";
 
 
-export const ProjectList = () => {
+export const ProjectList = ({projects}) => {
 
     const data = [
         {
@@ -36,6 +36,17 @@ export const ProjectList = () => {
 
             <div className="container px-4 px-lg-5">
 
+                {/* {projects.map((project, i) =>
+                    i % 2 == 0
+                        ? <ProjectLeft
+                            key={project._id}
+                            project={project}
+                        />
+                        : <ProjectRight
+                            key={project._id}
+                            project={project}
+                        />
+                )} */}
                 {data.map((project, i) =>
                     i % 2 == 0
                         ? <ProjectLeft

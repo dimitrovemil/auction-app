@@ -1,5 +1,6 @@
+import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-
+import * as projectService from './services/projectService';
 
 import './App.css';
 import { About } from './components/common/About';
@@ -14,15 +15,23 @@ import { UserLogin } from './components/users/user-login/UserLogin';
 
 function App() {
 
-    return (
+    const [projects, setProjects] = useState([]);
 
+    useEffect(() => {     
+        projectService.getAll()
+            .then(result => {
+                setProjects(result);
+            });
+    }, []);
+
+    return (
         <div className="App">
             <>
                 {<Navigation />}
 
                 <Routes>
                     <Route path='/' element={<Masthead />} />
-                    <Route path='/projects/*' element={<ProjectList />} />
+                    <Route path='/projects' element={<ProjectList projects={projects} />} />
                     <Route path='/projects/details/:projectId' element={<ProjectDetails />} />
                     
                     <Route path='/about' element={<About />} />
@@ -31,8 +40,6 @@ function App() {
                     <Route path='/login' element={<UserLogin />} />
                     <Route path='*' element={<h1>Not found</h1>} />
                 </Routes>
-
-
 
                 <Footer />
             </>

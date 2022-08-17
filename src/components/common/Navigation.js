@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { Link, NavLink } from 'react-router-dom';
 //import styles from './Navigation.module.css'
+import * as projectService from '../../services/projectService';
 
 import { ProjectCreate } from "../project-list/project-create/ProjectCreate";
 
 
 
 
-export const Navigation = ({ viewProjects, signup }) => {
+export const Navigation = () => {
 
     const [action, setAction] = useState(null);
 
@@ -15,8 +16,8 @@ export const Navigation = ({ viewProjects, signup }) => {
         setAction(null)
     }
 
-    const onProjectCreate = (projectData) => {
-        //call service create
+    const createProjectHandler = (projectData) => {
+        projectService.create(projectData)
         console.log(projectData);
         closeHandler();
     }
@@ -84,7 +85,8 @@ export const Navigation = ({ viewProjects, signup }) => {
                             </Link>
                         </li>
                     </ul>
-                    {action == 'create' && <ProjectCreate onClose={closeHandler} onCreate={onProjectCreate} />}
+                    {action == 'create' && <ProjectCreate onClose={closeHandler} onCreate={createProjectHandler} />}
+
                         {/* <li className="nav-item">
                             <NavLink
                                 className="nav-link" 
