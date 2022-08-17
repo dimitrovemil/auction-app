@@ -1,4 +1,4 @@
-
+import {Link} from 'react-router-dom';
 
 export const About = () => {
 
@@ -11,13 +11,13 @@ export const About = () => {
                         <h2 className="text-white mb-4">Welcome to the "The Art Auction House"</h2>
                         <p className="text-white-50">
                             The place where you can publish, get appraised, sell or simply enjoy painting, sculpture and art pieces.<br />
-                            <a href="#projects"><strong>Browse our collection</strong></a>
+                            <Link to="/projects"><strong>Browse our collection</strong></Link>
                             <span> or </span>
-                            <a href="#signup">Sign-up</a>
+                            <Link to="/signup">Sign-up</Link>
                             <span> / </span>
-                            <a href="#login">Login</a>
+                            <Link to="/login">Login</Link>
                             <span> to participate in the ongoing </span>
-                            <a href="#featured">Auctions</a>.
+                            <Link to="/projects">Auctions</Link>.
                         </p>
                     </div>
                 </div>

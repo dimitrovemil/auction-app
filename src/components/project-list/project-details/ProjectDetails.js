@@ -48,10 +48,14 @@ export const ProjectDetails = () => {
     }, [projectId]) // useEffetc depends on productId; make a new request when the projectId changes
 
     const nextProjectHandler = () => {
+        // TODO: Add validation for end of list
         // navigate(`/projects/details/${Number(projectId) + 1}`, {replace: true})
         navigate(`/projects/details/${Number(projectId) + 1}`);
     }
 
+    const previousProjectHandler = () => {
+        navigate(`/projects/details/${Number(projectId) - 1}`);
+    }
 
     return (
         <div className="row gx-0 mb-5 mb-lg-0 justify-content-center">
@@ -79,7 +83,9 @@ export const ProjectDetails = () => {
                             {/* <button type="submit" className="btn btn-primary" href="/#">type submit</button>
                                     <button type="button" className="btn btn-primary" href="/#">type btn</button> */}
                             {/* <a className="btn btn-primary" href="/#"> Details </a> */}
-                            <a className="btn btn-primary" onClick={nextProjectHandler}> Next </a>
+                            <a className="btn btn-primary-previous" onClick={previousProjectHandler} > Previous </a>
+
+                            <a className="btn btn-primary-next" onClick={nextProjectHandler}> Next </a>
                         </div>
                     </div>
                 </div>

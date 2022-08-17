@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { Navigate, useNavigate } from "react-router-dom";
 
 export const UserSignup = ({ onSignup }) => {
 
@@ -27,6 +27,8 @@ export const UserSignup = ({ onSignup }) => {
     const [confPassword, setConfPassword] = useState('');
 
     const [passMismatch, setPassMismach] = useState('');
+
+    const navigate = useNavigate();
 
     const emailChangeHandler = (e) => {
         setEmail(e.target.value);
@@ -78,6 +80,7 @@ export const UserSignup = ({ onSignup }) => {
         console.log(`${email} ${password}`);
         console.log('fullname', fullName);
 
+        navigate('/login');
         //In uncontrolled form/comp
         // const formData = new FormData(e.currentTarget);
         // const email = formData.get('email');

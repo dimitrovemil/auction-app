@@ -3032,6 +3032,18 @@ textarea.form-control-lg {
   opacity: 0.65;
 }
 
+.btn-primary-previous {
+  color: #fff;
+  background-color: #64a19d;
+  border-color: #64a19d;
+}
+.btn-primary-next {
+  margin-left: 1em;
+  color: #fff;
+  background-color: #64a19d;
+  border-color: #64a19d;
+}
+
 .btn-primary {
   color: #fff;
   background-color: #64a19d;

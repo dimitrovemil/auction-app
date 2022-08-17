@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 export const UserLogin = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
     const emailChangeHandler = (e) => {
         setEmail(e.target.value);
@@ -18,10 +19,12 @@ export const UserLogin = () => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-
+        setEmail('');
+        setPassword('');
         let values = Object.fromEntries(new FormData(e.target));
         console.log(values);
         console.log(`${email} ${password}`);
+        navigate('/');
     }
 
     return (
