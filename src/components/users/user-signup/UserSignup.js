@@ -88,54 +88,11 @@ export const UserSignup = ({ onSignup }) => {
 
     return (
         <section className="signup-section" id="signup">
-            {/* <div className="container px-4 px-lg-5">
-                <div className="row gx-4 gx-lg-5">
-                    <div className="col-md-10 col-lg-8 mx-auto text-center">
-                        <i className="far fa-paper-plane fa-2x mb-2 text-white"></i>
-                        <h2 className="text-white mb-5">Login!</h2>
-
-                        <form className="form-signup" id="contactForm" onSubmit={submitHandler}>
-                            <div className="row input-group-newsletter">
-                                <div className="col row-signup">
-                                    <input
-                                        className="form-control" id="email" name="email" type="email"
-                                        placeholder="Enter email address..." aria-label="Enter email address..."
-                                        // onChange={(e) => setEmail(e.target.value)}
-                                        onChange={emailChangeHandler}
-                                        value={email}
-                                    />
-                                </div>
-                            </div>
-                            
-                            <div className="row input-group-newsletter">
-                                <div className="col row-signup">
-                                    <input
-                                        className="form-control" id="password" name="password" type="password"
-                                        placeholder="Enter password..." aria-label="Enter password..."
-                                        onChange={passwordChangeHandler}
-                                        value={password}
-                                    />
-                                </div>
-                            </div>                           
-               
-                            <div className="col-auto row-signup">
-                                <button
-                                    className="btn btn-primary" id="submitButton" type="submit"
-                                    disabled={isSubmitBtnDisabled}
-                                >Login!
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div> */}
-
-
             <div className="container px-4 px-lg-5">
                 <div className="row gx-4 gx-lg-5">
                     <div className="col-md-10 col-lg-8 mx-auto text-center">
                         <i className="far fa-paper-plane fa-2x mb-2 text-white"></i>
-                        <h2 className="text-white mb-5">Regiser!</h2>
+                        <h2 className="text-white mb-5">Signup!</h2>
 
                         <form className="form-signup" id="contactForm"
                             onSubmit={submitHandler}>
@@ -195,7 +152,7 @@ export const UserSignup = ({ onSignup }) => {
                                 <button
                                     className="btn btn-primary" id="submitButton" type="submit"
                                     disabled={isSubmitBtnDisabled}
-                                    //onMouseEnter={validateConfPassword}
+                                //onMouseEnter={validateConfPassword}
                                 >Register!
                                 </button>
                             </div>

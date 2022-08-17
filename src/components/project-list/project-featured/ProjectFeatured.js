@@ -8,7 +8,7 @@ export const ProjectFeatured = () => {
             <div className="col-xl-8 col-lg-7">
                 <img
                     className="img-fluid mb-3 mb-lg-0"
-                    src="../img/bg-masthead.jpg"
+                    src="../../img/bg-masthead.jpg"
                     alt="..."
                 />
             </div>

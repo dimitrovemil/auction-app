@@ -1,13 +1,13 @@
 import { useState } from "react";
-import {Link} from 'react-router-dom';
-
+import { Link, NavLink } from 'react-router-dom';
+//import styles from './Navigation.module.css'
 
 import { ProjectCreate } from "../project-list/project-create/ProjectCreate";
 
 
 
 
-export const Navigation = ({viewProjects, signup}) => {
+export const Navigation = ({ viewProjects, signup }) => {
 
     const [action, setAction] = useState(null);
 
@@ -20,6 +20,12 @@ export const Navigation = ({viewProjects, signup}) => {
         console.log(projectData);
         closeHandler();
     }
+
+    // const setStyle = ({isActive}) => {
+    //     return isActive
+    //     ? styles['active-link']
+    //     : undefined
+    // }
 
     return (
 
@@ -56,23 +62,65 @@ export const Navigation = ({viewProjects, signup}) => {
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/about">
+                            <Link
+                                className="nav-link" 
+                                to="/about"                   
+                            >
                                 About
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/contacts">
+                            <Link
+                                className="nav-link" 
+                                to="/contacts"                             
+                            >
                                 Contacts
                             </Link>
                         </li>
-                        
+
                         <li className="nav-item">
-                            <Link className="nav-link" to="/signup" >
+                            <Link className="nav-link" to="/login" >
                                 Signup
                             </Link>
                         </li>
                     </ul>
-                    {action == 'create' && <ProjectCreate onClose={closeHandler} onCreate={onProjectCreate}/>}
+                    {action == 'create' && <ProjectCreate onClose={closeHandler} onCreate={onProjectCreate} />}
+                        {/* <li className="nav-item">
+                            <NavLink
+                                className="nav-link" 
+                                to="/about"
+                                style={(navLinkProps) => {
+                                    return navLinkProps.isActive 
+                                    ? {backgroundColor: 'blueviolet' }
+                                    : {backgroundColor: undefined}
+                                }}
+                            >
+                                About
+                            </NavLink>
+                        </li> */}
+                        {/* <li className="nav-item">
+                            <NavLink
+                                className="nav-link" 
+                                to="/contacts"
+                                // style={({isActive}) => {
+                                //     return isActive 
+                                //     ? {backgroundColor: 'blueviolet' }
+                                //     : {backgroundColor: undefined}
+                                // }}
+
+                                // style={({isActive}) => {
+                                //     return {backgroundColor: isActive ? 'blueviolet' : undefined }
+                                // }}
+
+                                // className={({isActive}) => {
+                                //     return {backgroundColor: isActive ? 'blueviolet' : undefined }
+                                // }}
+
+                                //className={setStyle}
+                            >
+                                Contacts
+                            </NavLink>
+                        </li> */}
                 </div>
             </div>
         </nav>

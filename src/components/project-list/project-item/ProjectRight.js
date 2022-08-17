@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export const ProjectRight = ({
     project,
@@ -25,7 +25,6 @@ export const ProjectRight = ({
                             <h2 className="text-white-50 mx-auto mt-2 mb-5">
 
                             </h2>
-                            {/* <a className="btn btn-primary" onClick={() => onDetailsClick(project._id)}> Details </a> */}
                             <Link className="btn btn-primary" to={`/projects/details/${project._id}`}> Details </Link>
                         </div>
                     </div>
