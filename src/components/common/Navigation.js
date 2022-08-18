@@ -6,21 +6,19 @@ import * as projectService from '../../services/projectService';
 import { ProjectCreate } from "../project-list/project-create/ProjectCreate";
 
 
+export const Navigation = ({showCreate}) => {
 
+    // const [action, setAction] = useState(null);
 
-export const Navigation = () => {
+    // const closeHandler = () => {
+    //     setAction(null)
+    // }
 
-    const [action, setAction] = useState(null);
-
-    const closeHandler = () => {
-        setAction(null)
-    }
-
-    const createProjectHandler = (projectData) => {
-        projectService.create(projectData)
-        console.log(projectData);
-        closeHandler();
-    }
+    // const createProjectHandler = (projectData) => {
+    //     projectService.create(projectData)
+    //     console.log(projectData);
+    //     closeHandler();
+    // }
 
     // const setStyle = ({isActive}) => {
     //     return isActive
@@ -53,7 +51,10 @@ export const Navigation = () => {
                 <div className="collapse navbar-collapse" id="navbarResponsive">
                     <ul className="navbar-nav ms-auto">
                         <li className="nav-item">
-                            <Link className="nav-link" to="#" onClick={() => setAction('create')}>
+                            {/* <Link className="nav-link" to="#" onClick={() => setAction('create')}>
+                                Add new
+                            </Link> */}
+                            <Link className="nav-link" to="#" onClick={() => showCreate()}>
                                 Add new
                             </Link>
                         </li>
@@ -85,7 +86,8 @@ export const Navigation = () => {
                             </Link>
                         </li>
                     </ul>
-                    {action == 'create' && <ProjectCreate onClose={closeHandler} onCreate={createProjectHandler} />}
+
+                    {/* {action == 'create' && <ProjectCreate onClose={closeHandler} onCreate={createProjectHandler} />} */}
 
                         {/* <li className="nav-item">
                             <NavLink
