@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
+import ProjectContext from './contexts/ProjectContext';
 
 import * as projectService from './services/projectService';
 
@@ -19,7 +20,9 @@ import { ProjectCreate } from './components/project-list/project-create/ProjectC
 function App() {
 
     const navigate = useNavigate();
+
     const [create, setCreate] = useState(null);
+    const [projects, setProjects] = useState({});
 
     const closeHandler = () => {
         setCreate(null)
@@ -36,26 +39,34 @@ function App() {
         navigate('/projects');
     }
 
-
+    useEffect(() => {
+        projectService.getAll()
+            .then(result => {
+                setProjects(result);
+            });
+    }, []);
+    
     return (
+
         <div className="App">
             <>
-                {<Navigation showCreate={showCreateHandler} />}
+                <ProjectContext.Provider value={{projects, setProjects, createProjectHandler}}>
+                    {<Navigation showCreate={showCreateHandler} />}
 
-                {create && <ProjectCreate onClose={closeHandler} onCreate={createProjectHandler} />}
+                    {create && <ProjectCreate onClose={closeHandler} onCreate={createProjectHandler} />}
 
-                <Routes>
-                    <Route path='/' element={<Masthead />} />
-                    <Route path='/projects' element={<ProjectList />} />
-                    <Route path='/projects/details/:projectId' element={<ProjectDetails />} />
+                    <Routes>
+                        <Route path='/' element={<Masthead />} />
+                        <Route path='/projects' element={<ProjectList />} />
+                        <Route path='/projects/details/:projectId' element={<ProjectDetails />} />
 
-                    <Route path='/about' element={<About />} />
-                    <Route path='/contacts' element={<Contact />} />
-                    <Route path='/signup' element={<UserSignup />} />
-                    <Route path='/login' element={<UserLogin />} />
-                    <Route path='*' element={<h1>Not found</h1>} />
-                </Routes>
-
+                        <Route path='/about' element={<About />} />
+                        <Route path='/contacts' element={<Contact />} />
+                        <Route path='/signup' element={<UserSignup />} />
+                        <Route path='/login' element={<UserLogin />} />
+                        <Route path='*' element={<h1>Not found</h1>} />
+                    </Routes>
+                </ProjectContext.Provider>
 
                 <Footer />
             </>

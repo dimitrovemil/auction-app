@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import styles from '../../../AppModal.module.css';
+import ProjectContext from '../../../contexts/ProjectContext';
 
 export const ProjectCreate = ({ onCreate, onClose }) => {
-
     //const [titleHasError, setTitleHasError] = useState('');
-
+    const {projects, setProjects, createProjectHandler} = useContext(ProjectContext);
     const [errors, setErrors] = useState({});
 
     const [formValues, setFormValues] = useState({
@@ -24,7 +24,9 @@ export const ProjectCreate = ({ onCreate, onClose }) => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        onCreate(formValues);
+        //onCreate(formValues);
+        createProjectHandler(formValues);
+        setProjects(state => ({...state, formValues}))
     }
 
     // const validateTitle = (e) => {

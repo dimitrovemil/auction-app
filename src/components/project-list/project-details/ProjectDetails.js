@@ -7,11 +7,8 @@ export const ProjectDetails = () => {
     let { projectId } = useParams();
     let navigate = useNavigate();
 
-    let [selectedProject, setSelectedProject] = useState({title: "adfafa"});
-    
-    console.log(selectedProject);
-    console.log(projectId);
-    
+    let [selectedProject, setSelectedProject] = useState({});
+   
     // useEffect(() => {
     //     projectService.getOne(projectId)
     //         .then(result => {
@@ -66,7 +63,6 @@ export const ProjectDetails = () => {
                                     <button type="button" className="btn btn-primary" href="/#">type btn</button> */}
                             {/* <a className="btn btn-primary" href="/#"> Details </a> */}
                             <a className="btn btn-primary-previous" onClick={previousProjectHandler} > Previous </a>
-
                             <a className="btn btn-primary-next" onClick={nextProjectHandler}> Next </a>
                         </div>
                     </div>
