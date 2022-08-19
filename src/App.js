@@ -18,37 +18,24 @@ import { ProjectCreate } from './components/project-list/project-create/ProjectC
 
 function App() {
 
-    const [create, setCreate] = useState(null);
     const navigate = useNavigate();
+    const [create, setCreate] = useState(null);
 
     const closeHandler = () => {
         setCreate(null)
     }
 
     const showCreateHandler = () => {
-        console.log('show add new');
         setCreate(true)
     }
 
     const createProjectHandler = (projectData) => {
         projectService.create(projectData)
         console.log(projectData);
-        // setProjects(state => ({...state, projectData}) )
         closeHandler();
         navigate('/projects');
     }
 
-
-    useEffect(() => {
-        projectService.getAll()
-            .then(result => {
-                setProjects(result);
-            });
-    }, []);
-
-    // useEffect(() => {
-    //     setData(state => [...state, ...mockData])
-    // }, []);
 
     return (
         <div className="App">

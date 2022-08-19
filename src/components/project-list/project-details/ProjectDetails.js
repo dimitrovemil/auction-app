@@ -1,51 +1,33 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import * as projectService from '../../../services/projectService';
 
 export const ProjectDetails = () => {
 
-    const data = [
-        {
-            _id: '1',
-            title: 'Misty',
-            description: 'An example of where you can put an image of a project, or anything else, along with a description.',
-            imageUrl: 'https://www.rwongphoto.com/images/xl/RW9092-BW_web.jpg'
-        },
-        {
-            _id: '2',
-            title: 'Mountains',
-            description: 'Another example of a project with its respective description. These sections work well responsively as well, try this theme on a small screen!',
-            imageUrl: 'https://m.media-amazon.com/images/I/A1xrjV+Y-AL._SL1500_.jpg'
-        },
-        {
-            _id: '3',
-            title: 'Some title',
-            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, quis.!',
-            imageUrl: 'https://www.capturelandscapes.com/wp-content/uploads/2016/12/black-white-landscape-featured.jpg'
-        },
-        {
-            _id: '4',
-            title: 'Some other title',
-            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit dolorem minus veniam est tempora adipisci possimus laborum in, illum eligendi pariatur aut natus fugit, tempore asperiores saepe delectus aliquam modi.',
-            imageUrl: 'https://www.guillenphoto.com/data/blog/2019/016-chronique-pourquoi-photographier-paysages-bw-I/images/photograph-landscapes-in-black-and-white-amar-guillen-landscape-photographer.jpg'
-        }
-    ];
+    let { projectId } = useParams();
+    let navigate = useNavigate();
 
-    const [selectedProject, setSelectedProject] = useState({});
+    let [selectedProject, setSelectedProject] = useState({title: "adfafa"});
     
-    const { projectId } = useParams();
-    const navigate = useNavigate();
+    console.log(selectedProject);
+    console.log(projectId);
+    
+    // useEffect(() => {
+    //     projectService.getOne(projectId)
+    //         .then(result => {
+    //             console.log(result);
+    //             setSelectedProject(result);
+    //             console.log(selectedProject);
+    //         })
+    //         .catch(navigate('/not-found'));;
+    // }, [projectId]);
 
     useEffect(() => {
-        // fetch(`.../${projectId}`)
-        //     .then(res => res.json())
-        //     .then(result => {
-        //         setSelectedProject(result);
-        //     })
-        //     .catch(navigate('/not-found'));
+        fetch(`http://localhost:3030/jsonstore/projects/${projectId}`)
+        .then(res => res.json())
+        .then(result => setSelectedProject(result))
+    }, [projectId])
 
-        const project = data.find(x => x._id == projectId);
-        setSelectedProject(project);
-    }, [projectId]) // useEffetc depends on productId; make a new request when the projectId changes
 
     const nextProjectHandler = () => {
         // TODO: Add validation for end of list
