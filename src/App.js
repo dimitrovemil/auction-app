@@ -17,6 +17,7 @@ import { Navigation } from './components/common/Navigation';
 import { ProjectList } from './components/project-list/ProjectList';
 import { ProjectDetails } from './components/project-list/project-details/ProjectDetails';
 import { UserLogin } from './components/users/user-login/UserLogin';
+import { UserLogout } from './components/users/user-logout/UserLogout'
 import { ProjectCreate } from './components/project-list/project-create/ProjectCreate'
 
 function App() {
@@ -30,6 +31,10 @@ function App() {
 
     const userLogin = (authData) => {
         setAuth(authData);
+    };
+
+    const userLogout = () => {
+        setAuth({});
     };
 
     const closeHandler = () => {
@@ -55,7 +60,7 @@ function App() {
     }, []);
 
     return (
-        <AuthContext.Provider value={{ user: auth, userLogin }}>
+        <AuthContext.Provider value={{ user: auth, userLogin, userLogout }}>
             <div className="App">
                 <>
                     {<Navigation showCreate={showCreateHandler} />}
@@ -72,6 +77,7 @@ function App() {
                             <Route path='/contacts' element={<Contact />} />
                             <Route path='/signup' element={<UserSignup />} />
                             <Route path='/login' element={<UserLogin />} />
+                            <Route path='/logout' element={<UserLogout />} />
                             <Route path='*' element={<h1>Not found</h1>} />
                         </Routes>
                     </ProjectContext.Provider>

@@ -1,13 +1,16 @@
 import { useState } from "react";
 import { Link, NavLink } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../../contexts/AuthContext';
 //import styles from './Navigation.module.css'
 import * as projectService from '../../services/projectService';
 
 import { ProjectCreate } from "../project-list/project-create/ProjectCreate";
 
 
-export const Navigation = ({showCreate}) => {
+export const Navigation = ({ showCreate }) => {
 
+    const { user } = useContext(AuthContext);
     // const [action, setAction] = useState(null);
 
     // const closeHandler = () => {
@@ -50,14 +53,13 @@ export const Navigation = ({showCreate}) => {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarResponsive">
                     <ul className="navbar-nav ms-auto">
-                        <li className="nav-item">
-                            {/* <Link className="nav-link" to="#" onClick={() => setAction('create')}>
-                                Add new
-                            </Link> */}
-                            <Link className="nav-link" to="#" onClick={() => showCreate()}>
-                                Add new
-                            </Link>
-                        </li>
+                        {user.email
+                            ? <li className="nav-item">
+                                <Link className="nav-link" to="#" onClick={() => showCreate()}> Add new </Link>
+                            </li>
+                            : ''
+                        }
+
                         <li className="nav-item">
                             <Link className="nav-link" to="/projects" >
                                 Projects
@@ -65,31 +67,33 @@ export const Navigation = ({showCreate}) => {
                         </li>
                         <li className="nav-item">
                             <Link
-                                className="nav-link" 
-                                to="/about"                   
+                                className="nav-link"
+                                to="/about"
                             >
                                 About
                             </Link>
                         </li>
                         <li className="nav-item">
                             <Link
-                                className="nav-link" 
-                                to="/contacts"                             
+                                className="nav-link"
+                                to="/contacts"
                             >
                                 Contacts
                             </Link>
                         </li>
 
                         <li className="nav-item">
-                            <Link className="nav-link" to="/login" >
-                                Signup
-                            </Link>
+                            {user.email
+                                ? <Link className="nav-link" to="/logout" > Logout </Link>
+                                : <Link className="nav-link" to="/login" > Login </Link>
+                            }
+
                         </li>
                     </ul>
 
                     {/* {action == 'create' && <ProjectCreate onClose={closeHandler} onCreate={createProjectHandler} />} */}
 
-                        {/* <li className="nav-item">
+                    {/* <li className="nav-item">
                             <NavLink
                                 className="nav-link" 
                                 to="/about"
@@ -102,7 +106,7 @@ export const Navigation = ({showCreate}) => {
                                 About
                             </NavLink>
                         </li> */}
-                        {/* <li className="nav-item">
+                    {/* <li className="nav-item">
                             <NavLink
                                 className="nav-link" 
                                 to="/contacts"
