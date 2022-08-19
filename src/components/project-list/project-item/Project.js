@@ -1,9 +1,9 @@
-
+import { Link } from 'react-router-dom';
 
 export const Project = ({
     project,
     index,
-    onDetailsClick
+    //onDetailsClick
 }) => {
     let isEven = index % 2 === 0;
 
@@ -35,7 +35,8 @@ export const Project = ({
                                     {/* <button type="submit" className="btn btn-primary" href="/#">type submit</button>
                                     <button type="button" className="btn btn-primary" href="/#">type btn</button> */}
                                     {/* <a className="btn btn-primary" href="/#"> Details </a> */}
-                                    <a className="btn btn-primary" onClick={() => onDetailsClick(project._id)}> Details </a>
+                                    {/* <a className="btn btn-primary" onClick={() => onDetailsClick(project._id)}> Details </a> */}
+                                    <Link className="btn btn-primary" to={`/projects/details/${project._id}`}> Details </Link>
                                 </div>
                             </div>
                         </div>
@@ -61,7 +62,8 @@ export const Project = ({
                                     <h2 className="text-white-50 mx-auto mt-2 mb-5">
 
                                     </h2>
-                                    <a className="btn btn-primary" onClick={() => onDetailsClick(project._id)}> Details </a>
+                                    {/* <a className="btn btn-primary" onClick={() => onDetailsClick(project._id)}> Details </a> */}
+                                    <Link className="btn btn-primary" to={`/projects/details/${project._id}`}> Details </Link>
                                 </div>
                             </div>
                         </div>
