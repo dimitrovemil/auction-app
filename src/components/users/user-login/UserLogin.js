@@ -1,11 +1,16 @@
 import { useState } from "react";
 import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { useContext } from "react";
+
+import { AuthContext } from "../../../contexts/AuthContext";
+import * as authService from "../../../services/authService";
 
 export const UserLogin = () => {
+    const navigate = useNavigate();
+    const { userLogin } = useContext(AuthContext);
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const navigate = useNavigate();
 
     const emailChangeHandler = (e) => {
         setEmail(e.target.value);
@@ -19,11 +24,19 @@ export const UserLogin = () => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        setEmail('');
-        setPassword('');
-        let values = Object.fromEntries(new FormData(e.target));
-        console.log(values);
-        console.log(`${email} ${password}`);
+        // setEmail('');
+        // setPassword('');
+        let { email, password } = Object.fromEntries(new FormData(e.target));
+
+        authService.login(email, password)
+            .then(authData => {
+                userLogin(authData);
+                navigate('/projects');
+            })
+            .catch(() => {
+                navigate('/404');
+            });
+
         navigate('/');
     }
 

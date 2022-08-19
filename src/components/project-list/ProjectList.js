@@ -2,12 +2,13 @@ import { Project } from "./project-item/Project";
 import { useState, useEffect, useContext } from "react";
 
 import * as projectService from '../../services/projectService';
-import ProjectContext from "../../contexts/ProjectContext";
+import {ProjectContext} from "../../contexts/ProjectContext";
 
-export const ProjectList = () => {
+export const ProjectList = ({projects}) => {
 
     //const [projects, setProjects] = useState({});
-    const {projects, setProjects} = useContext(ProjectContext);
+    //const {projects, setProjects} = useContext(ProjectContext);
+    
     // useEffect(() => {
     //     projectService.getAll()
     //         .then(result => {
