@@ -12,7 +12,7 @@ export const ProjectEdit = () => {
         description: '',
         imageUrl: '',
     });
-    
+
     const { projectEdit } = useContext(ProjectContext);
     const { projectId } = useParams();
     const navigate = useNavigate();
@@ -22,7 +22,7 @@ export const ProjectEdit = () => {
             .then(projectData => {
                 setFormValues(projectData);
             })
-    }, [])
+    },[projectId])
 
     const submitHandler = (e) => {
         e.preventDefault();

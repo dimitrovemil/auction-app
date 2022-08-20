@@ -14,6 +14,7 @@ export const ProjectDetails = () => {
         projectService.getOne(projectId)
             .then(result => {
                 setSelectedProject(result);
+                console.log(result);
             });
     }, [projectId])
 
@@ -43,7 +44,7 @@ export const ProjectDetails = () => {
                             </h2>
 
                             <Link className="btn btn-primary-previous" to={`/projects/${projectId}/edit`} > Edit </Link>
-                            <Link className="btn btn-primary-next" to="#"> Delete </Link>
+                            <Link className="btn btn-primary-next" to={`/projects/${projectId}/delete`}> Delete </Link>
                         </div>
                     </div>
                 </div>

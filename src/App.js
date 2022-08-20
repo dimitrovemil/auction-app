@@ -21,6 +21,7 @@ import { ProjectEdit } from './components/project-list/project-edit/ProjectEdit'
 import { UserRegister } from './components/users/user-register/UserRegister';
 import { UserLogin } from './components/users/user-login/UserLogin';
 import { UserLogout } from './components/users/user-logout/UserLogout'
+import { ProjectDelete } from './components/project-list/project-delete/ProjectDelete';
 
 function App() {
 
@@ -49,6 +50,10 @@ function App() {
 
     const projectEdit = (projectId, projectData) => {
         setProjects(state => state.map(x => x._id === projectId ? projectData : x));
+    }
+
+    const projectDelete = (projectId) => {
+        setProjects(state => state.filter(x => x._id !== projectId));
     }
 
     useEffect(() => {
@@ -82,13 +87,14 @@ function App() {
                     {/* {<Navigation showCreate={showCreateHandler} />} */}
                     {/* {create && <ProjectCreate onClose={closeHandler} onCreate={createProjectHandler} />} */}
 
-                    <ProjectContext.Provider value={{ projects, projectAdd, projectEdit }}>
+                    <ProjectContext.Provider value={{ projects, projectAdd, projectEdit, projectDelete }}>
                         <Routes>
                             <Route path='/' element={<Masthead />} />
                             <Route path='/projects' element={<ProjectList projects={projects} />} />
                             <Route path='/projects/details/:projectId' element={<ProjectDetails />} />
                             <Route path='/create' element={<ProjectCreate />} />
                             <Route path="/projects/:projectId/edit" element={<ProjectEdit />} />
+                            <Route path="/projects/:projectId/delete" element={<ProjectDelete />} />
 
                             <Route path='/register' element={<UserRegister />} />
                             <Route path='/login' element={<UserLogin />} />

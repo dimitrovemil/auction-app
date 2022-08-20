@@ -76,15 +76,8 @@ export const UserRegister = ({ onSignup }) => {
         authService.register(email, password, fullName)
             .then(authData => {
                 userLogin(authData);
-                navigate('/login');
+                navigate('/projects');
             });
-
-        navigate('/login');
-        //In uncontrolled form/comp
-        // const formData = new FormData(e.currentTarget);
-        // const email = formData.get('email');
-        // const {email, fullName, password, confPassword} = Object.fromEntries(new FormData(e.currentTarget));
-
     }
 
 
