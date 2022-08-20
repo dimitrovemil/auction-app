@@ -7,12 +7,12 @@ import * as projectService from '../../../services/projectService';
 export const ProjectDelete = () => {
     const navigate = useNavigate();
     const { projectId } = useParams();
-    const { projectDelete } = useContext(ProjectContext);
+    const { projectRemove } = useContext(ProjectContext);
     console.log(projectId);
     useEffect(() => {
         projectService.remove(projectId)
             .then(() => {
-                projectDelete(projectId);
+                projectRemove(projectId);
                 navigate('/projects');
             })
             .catch(() => {

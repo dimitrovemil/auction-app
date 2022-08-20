@@ -1,8 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import * as projectService from '../../../services/projectService';
+import { AuthContext } from '../../../contexts/AuthContext';
 
 export const ProjectDetails = () => {
+    const { user } = useContext(AuthContext);
 
     let { projectId } = useParams();
 
@@ -43,8 +45,15 @@ export const ProjectDetails = () => {
                                 {selectedProject.description}
                             </h2>
 
-                            <Link className="btn btn-primary-previous" to={`/projects/${projectId}/edit`} > Edit </Link>
-                            <Link className="btn btn-primary-next" to={`/projects/${projectId}/delete`}> Delete </Link>
+                            {user._id === selectedProject._ownerId
+                                ? <>
+                                    <Link className="btn btn-primary-previous" to={`/projects/${projectId}/edit`} > Edit </Link>
+                                    <Link className="btn btn-primary-next" to={`/projects/${projectId}/delete`}> Delete </Link>
+                                </>
+
+                                : <Link className="btn btn-primary-previous" to={`/projects`} > Back </Link>
+                            }
+                            
                         </div>
                     </div>
                 </div>

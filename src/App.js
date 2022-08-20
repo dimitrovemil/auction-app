@@ -52,7 +52,7 @@ function App() {
         setProjects(state => state.map(x => x._id === projectId ? projectData : x));
     }
 
-    const projectDelete = (projectId) => {
+    const projectRemove = (projectId) => {
         setProjects(state => state.filter(x => x._id !== projectId));
     }
 
@@ -87,7 +87,7 @@ function App() {
                     {/* {<Navigation showCreate={showCreateHandler} />} */}
                     {/* {create && <ProjectCreate onClose={closeHandler} onCreate={createProjectHandler} />} */}
 
-                    <ProjectContext.Provider value={{ projects, projectAdd, projectEdit, projectDelete }}>
+                    <ProjectContext.Provider value={{ projects, projectAdd, projectEdit, projectRemove }}>
                         <Routes>
                             <Route path='/' element={<Masthead />} />
                             <Route path='/projects' element={<ProjectList projects={projects} />} />
