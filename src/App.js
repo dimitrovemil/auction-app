@@ -16,6 +16,7 @@ import { Navigation } from './components/common/Navigation';
 import { ProjectList } from './components/project-list/ProjectList';
 import { ProjectCreate } from './components/project-list/project-create/ProjectCreate'
 import { ProjectDetails } from './components/project-list/project-details/ProjectDetails';
+import { ProjectEdit } from './components/project-list/project-edit/ProjectEdit';
 
 import { UserRegister } from './components/users/user-register/UserRegister';
 import { UserLogin } from './components/users/user-login/UserLogin';
@@ -24,8 +25,6 @@ import { UserLogout } from './components/users/user-logout/UserLogout'
 function App() {
 
     const navigate = useNavigate();
-
-    const [create, setCreate] = useState(null);
 
     const [projects, setProjects] = useState({});
 
@@ -44,10 +43,13 @@ function App() {
             ...state,
             projectData,
         ]);
-        
-        navigate('/projects')
-        // navigate(`/projects/details/${projectData._id}`);
+
+        navigate(`/projects/details/${projectData._id}`);
     };
+
+    const projectEdit = (projectId, projectData) => {
+        setProjects(state => state.map(x => x._id === projectId ? projectData : x));
+    }
 
     useEffect(() => {
         projectService.getAll()
@@ -80,18 +82,20 @@ function App() {
                     {/* {<Navigation showCreate={showCreateHandler} />} */}
                     {/* {create && <ProjectCreate onClose={closeHandler} onCreate={createProjectHandler} />} */}
 
-                    <ProjectContext.Provider value={{ projects, projectAdd }}>
+                    <ProjectContext.Provider value={{ projects, projectAdd, projectEdit }}>
                         <Routes>
                             <Route path='/' element={<Masthead />} />
                             <Route path='/projects' element={<ProjectList projects={projects} />} />
                             <Route path='/projects/details/:projectId' element={<ProjectDetails />} />
                             <Route path='/create' element={<ProjectCreate />} />
+                            <Route path="/projects/:projectId/edit" element={<ProjectEdit />} />
 
-                            <Route path='/about' element={<About />} />
-                            <Route path='/contacts' element={<Contact />} />
                             <Route path='/register' element={<UserRegister />} />
                             <Route path='/login' element={<UserLogin />} />
                             <Route path='/logout' element={<UserLogout />} />
+
+                            <Route path='/about' element={<About />} />
+                            <Route path='/contacts' element={<Contact />} />
                             <Route path='*' element={<h1>Not found</h1>} />
                         </Routes>
                     </ProjectContext.Provider>
