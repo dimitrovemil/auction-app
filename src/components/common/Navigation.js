@@ -8,7 +8,7 @@ import * as projectService from '../../services/projectService';
 import { ProjectCreate } from "../project-list/project-create/ProjectCreate";
 
 
-export const Navigation = ({ showCreate }) => {
+export const Navigation = () => {
 
     const { user } = useContext(AuthContext);
     // const [action, setAction] = useState(null);
@@ -56,7 +56,7 @@ export const Navigation = ({ showCreate }) => {
                         {user.email && <span className="nav-item nav-link"> Welcome, {user.fullName}</span>}
                         {user.email
                             ? <li className="nav-item">
-                                <Link className="nav-link" to="#" onClick={() => showCreate()}> Add new </Link>
+                                <Link className="nav-link" to="/create"> Add new </Link>
                             </li>
                             : ''
                         }

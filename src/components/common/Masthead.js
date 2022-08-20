@@ -1,4 +1,4 @@
-
+import {Link} from 'react-router-dom'
 
 export const Masthead = () => {
 
@@ -11,9 +11,9 @@ export const Masthead = () => {
                         <h2 className="text-white-50 mx-auto mt-2 mb-5">
                             {/* A free, responsive, one page Bootstrap theme created by Start Bootstrap. */}
                         </h2>
-                        <a className="btn btn-primary" href="#about">
+                        <Link className="btn btn-primary" to="/about">
                             Get Started
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>

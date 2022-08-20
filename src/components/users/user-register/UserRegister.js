@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { useContext } from "react";
 
@@ -53,7 +53,7 @@ export const UserRegister = ({ onSignup }) => {
         setConfPassword(e.target.value);
     }
 
-    let isSubmitBtnDisabled = (email === '' || fullName === '' || password === '' || confPassword === '') && passMismatch;
+    let isSubmitBtnDisabled = (email === '' || fullName === '' || password === '' || confPassword === '') || passMismatch;
 
     let validateConfPassword = () => {
         if (password !== confPassword) {
@@ -67,8 +67,8 @@ export const UserRegister = ({ onSignup }) => {
     const submitHandler = (e) => {
         e.preventDefault();
 
-        let {email, fullName, password, confPassword} = Object.fromEntries(new FormData(e.target));
-        
+        let { email, fullName, password, confPassword } = Object.fromEntries(new FormData(e.target));
+
         if (password !== confPassword) {
             return;
         }

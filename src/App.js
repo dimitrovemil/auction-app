@@ -28,6 +28,7 @@ function App() {
     const [create, setCreate] = useState(null);
 
     const [projects, setProjects] = useState({});
+
     const [auth, setAuth] = useLocalStorage('auth', {});
 
     const userLogin = (authData) => {
@@ -38,20 +39,15 @@ function App() {
         setAuth({});
     };
 
-    const closeHandler = () => {
-        setCreate(null)
-    }
-
-    const showCreateHandler = () => {
-        setCreate(true)
-    }
-
-    const createProjectHandler = (projectData) => {
-        projectService.create(projectData)
-        console.log(projectData);
-        closeHandler();
-        navigate('/projects');
-    }
+    const projectAdd = (projectData) => {
+        setProjects(state => [
+            ...state,
+            projectData,
+        ]);
+        
+        navigate('/projects')
+        // navigate(`/projects/details/${projectData._id}`);
+    };
 
     useEffect(() => {
         projectService.getAll()
@@ -60,19 +56,36 @@ function App() {
             });
     }, []);
 
+    // const closeHandler = () => {
+    //     setCreate(null)
+    // }
+
+    // const showCreateHandler = () => {
+    //     setCreate(true)
+    // }
+
+    // const createProjectHandler = (projectData) => {
+    //     projectService.create(projectData)
+    //     console.log(projectData);
+    //     closeHandler();
+    //     navigate('/projects');
+    // }
+
     return (
         <AuthContext.Provider value={{ user: auth, userLogin, userLogout }}>
             <div className="App">
                 <>
-                    {<Navigation showCreate={showCreateHandler} />}
+                    {<Navigation />}
 
-                    {create && <ProjectCreate onClose={closeHandler} onCreate={createProjectHandler} />}
+                    {/* {<Navigation showCreate={showCreateHandler} />} */}
+                    {/* {create && <ProjectCreate onClose={closeHandler} onCreate={createProjectHandler} />} */}
 
-                    <ProjectContext.Provider value={{ projects }}>
+                    <ProjectContext.Provider value={{ projects, projectAdd }}>
                         <Routes>
                             <Route path='/' element={<Masthead />} />
                             <Route path='/projects' element={<ProjectList projects={projects} />} />
                             <Route path='/projects/details/:projectId' element={<ProjectDetails />} />
+                            <Route path='/create' element={<ProjectCreate />} />
 
                             <Route path='/about' element={<About />} />
                             <Route path='/contacts' element={<Contact />} />

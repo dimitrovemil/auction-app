@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useContext } from "react";
 
 import { AuthContext } from "../../../contexts/AuthContext";
@@ -31,13 +31,11 @@ export const UserLogin = () => {
         authService.login(email, password)
             .then(authData => {
                 userLogin(authData);
-                navigate('/projects');
+                navigate('/');
             })
             .catch(() => {
                 navigate('/404');
             });
-
-        navigate('/');
     }
 
     return (

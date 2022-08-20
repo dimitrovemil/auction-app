@@ -13,7 +13,7 @@ export const About = () => {
                             The place where you can publish, get appraised, sell or simply enjoy painting, sculpture and art pieces.<br />
                             <Link to="/projects"><strong>Browse our collection</strong></Link>
                             <span> or </span>
-                            <Link to="/signup">Sign-up</Link>
+                            <Link to="/register">Register</Link>
                             <span> / </span>
                             <Link to="/login">Login</Link>
                             <span> to participate in the ongoing </span>
