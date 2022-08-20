@@ -11,14 +11,15 @@ import './App.css';
 import { About } from './components/common/About';
 import { Contact } from './components/common/Contact';
 import { Footer } from './components/common/Footer';
-import { UserSignup } from './components/users/user-signup/UserSignup';
 import { Masthead } from './components/common/Masthead';
 import { Navigation } from './components/common/Navigation';
 import { ProjectList } from './components/project-list/ProjectList';
+import { ProjectCreate } from './components/project-list/project-create/ProjectCreate'
 import { ProjectDetails } from './components/project-list/project-details/ProjectDetails';
+
+import { UserRegister } from './components/users/user-register/UserRegister';
 import { UserLogin } from './components/users/user-login/UserLogin';
 import { UserLogout } from './components/users/user-logout/UserLogout'
-import { ProjectCreate } from './components/project-list/project-create/ProjectCreate'
 
 function App() {
 
@@ -75,7 +76,7 @@ function App() {
 
                             <Route path='/about' element={<About />} />
                             <Route path='/contacts' element={<Contact />} />
-                            <Route path='/signup' element={<UserSignup />} />
+                            <Route path='/register' element={<UserRegister />} />
                             <Route path='/login' element={<UserLogin />} />
                             <Route path='/logout' element={<UserLogout />} />
                             <Route path='*' element={<h1>Not found</h1>} />

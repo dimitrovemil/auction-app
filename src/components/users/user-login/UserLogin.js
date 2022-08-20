@@ -49,7 +49,7 @@ export const UserLogin = () => {
                         <i className="far fa-paper-plane fa-2x mb-2 text-white"></i>
                         <h2 className="text-white mb-5">Login!</h2>
                         <h4 className="text-white">
-                            Need a <Link to="/signup"> <ins>Registeration</ins> </Link>first to login!
+                            Need a <Link to="/register"> <ins>Registeration</ins> </Link>first to login!
                         </h4>
 
                         <form className="form-signup" id="contactForm"

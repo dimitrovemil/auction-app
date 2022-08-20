@@ -53,6 +53,7 @@ export const Navigation = ({ showCreate }) => {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarResponsive">
                     <ul className="navbar-nav ms-auto">
+                        {user.email && <span className="nav-item nav-link"> Welcome, {user.fullName}</span>}
                         {user.email
                             ? <li className="nav-item">
                                 <Link className="nav-link" to="#" onClick={() => showCreate()}> Add new </Link>

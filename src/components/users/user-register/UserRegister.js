@@ -1,7 +1,12 @@
 import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 
-export const UserSignup = ({ onSignup }) => {
+import { useContext } from "react";
+
+import * as authService from "../../../services/authService";
+import { AuthContext } from "../../../contexts/AuthContext";
+
+export const UserRegister = ({ onSignup }) => {
 
     // <input id='title' name="title" type="text"
     //                                     value={formValues.title}
@@ -21,6 +26,9 @@ export const UserSignup = ({ onSignup }) => {
     //     }))
     // }
 
+    const { userLogin } = useContext(AuthContext);
+    const navigate = useNavigate();
+
     const [email, setEmail] = useState('');
     const [fullName, setFullName] = useState('');
     const [password, setPassword] = useState('');
@@ -28,7 +36,6 @@ export const UserSignup = ({ onSignup }) => {
 
     const [passMismatch, setPassMismach] = useState('');
 
-    const navigate = useNavigate();
 
     const emailChangeHandler = (e) => {
         setEmail(e.target.value);
@@ -46,7 +53,7 @@ export const UserSignup = ({ onSignup }) => {
         setConfPassword(e.target.value);
     }
 
-    let isSubmitBtnDisabled = (email === '' || fullName === '' || password === '' || confPassword === '') && password !== confPassword;
+    let isSubmitBtnDisabled = (email === '' || fullName === '' || password === '' || confPassword === '') && passMismatch;
 
     let validateConfPassword = () => {
         if (password !== confPassword) {
@@ -56,29 +63,21 @@ export const UserSignup = ({ onSignup }) => {
         }
     }
 
-    //let isSubmitBtnDisabled = true;
-    //useRef
-    // useEffect(() => {
-    //     if (email && fullName && password && confPassword) {
-    //         isSubmitBtnDisabled = false;
-    //     } else {
-    //         isSubmitBtnDisabled = true;
-    //     }
-    // }, [email, fullName, password, confPassword]);
-
-    // useEffect(() => {
-    //     if (password !== confPassword) {
-    //         setPassMismach(true)
-    //     }
-    // }, [confPassword]);
 
     const submitHandler = (e) => {
         e.preventDefault();
 
-        let values = Object.fromEntries(new FormData(e.target));
-        console.log(values);
-        console.log(`${email} ${password}`);
-        console.log('fullname', fullName);
+        let {email, fullName, password, confPassword} = Object.fromEntries(new FormData(e.target));
+        
+        if (password !== confPassword) {
+            return;
+        }
+
+        authService.register(email, password, fullName)
+            .then(authData => {
+                userLogin(authData);
+                navigate('/login');
+            });
 
         navigate('/login');
         //In uncontrolled form/comp
@@ -95,7 +94,7 @@ export const UserSignup = ({ onSignup }) => {
                 <div className="row gx-4 gx-lg-5">
                     <div className="col-md-10 col-lg-8 mx-auto text-center">
                         <i className="far fa-paper-plane fa-2x mb-2 text-white"></i>
-                        <h2 className="text-white mb-5">Signup!</h2>
+                        <h2 className="text-white mb-5">Register!</h2>
 
                         <form className="form-signup" id="contactForm"
                             onSubmit={submitHandler}>
