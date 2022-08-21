@@ -11,6 +11,7 @@ export const ProjectEdit = () => {
         author: '',
         description: '',
         imageUrl: '',
+        price: '',
     });
 
     const { projectEdit } = useContext(ProjectContext);
@@ -93,6 +94,19 @@ export const ProjectEdit = () => {
                                     />
                                 </div>
                             </div>
+
+
+                            <div className="row input-group-newsletter">
+                                <div className="col row-signup">
+                                    <input
+                                        className="form-control" id="price" name="price" type="number"
+                                        placeholder="Auction price..." aria-label="Auction price..."
+                                        value={formValues.price}
+                                        onChange={changeHandler}
+                                    />
+                                </div>
+                            </div>
+
 
                             <div className="col-auto row-signup">
                                 <button className="btn btn-primary-previous" id="submitButton" type="submit"

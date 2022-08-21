@@ -14,6 +14,7 @@ export const ProjectCreate = () => {
         author: '',
         description: '',
         imageUrl: '',
+        price : '',
     });
 
     const changeHandler = (e) => {
@@ -119,6 +120,19 @@ export const ProjectCreate = () => {
                                     />
                                 </div>
                             </div>
+
+
+                            <div className="row input-group-newsletter">
+                                <div className="col row-signup">
+                                    <input
+                                        className="form-control" id="price" name="price" type="number"
+                                        placeholder="Auction price..." aria-label="Auction price..."
+                                        value={formValues.price}
+                                        onChange={changeHandler}
+                                    />
+                                </div>
+                            </div>
+
 
                             <div className="col-auto row-signup">
                                 <button className="btn btn-primary" id="submitButton" type="submit"

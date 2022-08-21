@@ -56,6 +56,20 @@ function App() {
         setProjects(state => state.filter(x => x._id !== projectId));
     }
 
+    const addBid = (projectId, bid) => {
+        setProjects(state => {
+            const project = state.find(x => x._id == projectId);
+
+            const bids = project.bids || [];
+            bids.push(bid)
+
+            return [
+                ...state.filter(x => x._id !== projectId),
+                { ...project, bid },
+            ];
+        });
+    };
+
     useEffect(() => {
         projectService.getAll()
             .then(result => {
@@ -91,7 +105,7 @@ function App() {
                         <Routes>
                             <Route path='/' element={<Masthead />} />
                             <Route path='/projects' element={<ProjectList projects={projects} />} />
-                            <Route path='/projects/details/:projectId' element={<ProjectDetails />} />
+                            <Route path='/projects/details/:projectId' element={<ProjectDetails addBid={addBid} />} />
                             <Route path='/create' element={<ProjectCreate />} />
                             <Route path="/projects/:projectId/edit" element={<ProjectEdit />} />
                             <Route path="/projects/:projectId/delete" element={<ProjectDelete />} />
