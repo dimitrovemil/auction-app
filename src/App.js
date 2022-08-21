@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import * as projectService from './services/projectService';
 import { AuthContext } from './contexts/AuthContext';
@@ -27,7 +27,7 @@ function App() {
 
     const navigate = useNavigate();
 
-    const [projects, setProjects] = useState({});
+    const [projects, setProjects] = useState([]);
 
     const [auth, setAuth] = useLocalStorage('auth', {});
 
@@ -56,17 +56,17 @@ function App() {
         setProjects(state => state.filter(x => x._id !== projectId));
     }
 
-    const addBid = (projectId, bid) => {
+    const addBid = (projectId, bid, bestBid) => {
         setProjects(state => {
-            const project = state.find(x => x._id == projectId);
-
+            const project = state.find(x => x._id === projectId);
+            console.log(project);
             const bids = project.bids || [];
             bids.push(bid)
 
-            return [
+            return ([
                 ...state.filter(x => x._id !== projectId),
-                { ...project, bid },
-            ];
+                { ...project, bids, price: bestBid },
+            ]);
         });
     };
 
@@ -77,20 +77,7 @@ function App() {
             });
     }, []);
 
-    // const closeHandler = () => {
-    //     setCreate(null)
-    // }
 
-    // const showCreateHandler = () => {
-    //     setCreate(true)
-    // }
-
-    // const createProjectHandler = (projectData) => {
-    //     projectService.create(projectData)
-    //     console.log(projectData);
-    //     closeHandler();
-    //     navigate('/projects');
-    // }
 
     return (
         <AuthContext.Provider value={{ user: auth, userLogin, userLogout }}>
@@ -98,14 +85,11 @@ function App() {
                 <>
                     {<Navigation />}
 
-                    {/* {<Navigation showCreate={showCreateHandler} />} */}
-                    {/* {create && <ProjectCreate onClose={closeHandler} onCreate={createProjectHandler} />} */}
-
                     <ProjectContext.Provider value={{ projects, projectAdd, projectEdit, projectRemove }}>
                         <Routes>
                             <Route path='/' element={<Masthead />} />
                             <Route path='/projects' element={<ProjectList projects={projects} />} />
-                            <Route path='/projects/details/:projectId' element={<ProjectDetails addBid={addBid} />} />
+                            <Route path='/projects/details/:projectId' element={<ProjectDetails projects={projects} addBid={addBid} />} />
                             <Route path='/create' element={<ProjectCreate />} />
                             <Route path="/projects/:projectId/edit" element={<ProjectEdit />} />
                             <Route path="/projects/:projectId/delete" element={<ProjectDelete />} />

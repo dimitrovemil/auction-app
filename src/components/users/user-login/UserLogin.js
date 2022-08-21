@@ -31,7 +31,7 @@ export const UserLogin = () => {
         authService.login(email, password)
             .then(authData => {
                 userLogin(authData);
-                navigate('/');
+                navigate('/projects');
             })
             .catch(() => {
                 navigate('/login');
